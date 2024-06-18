@@ -22,6 +22,9 @@ const url = require("url");
 // });
 
 ////////////////* SERVER
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
+const dataObj = JSON.parse(data);
+
 const server = http.createServer((req, res) => {
   const pathname = req.url;
 
@@ -29,9 +32,14 @@ const server = http.createServer((req, res) => {
     res.end("this is OVERVIEW");
   } else if (pathname === "/product") {
     res.end("this is PRODUCT");
+  } else if (pathname === "/api") {
+    res.writeHead(200, {
+      "Content-type": "application/JSON",
+    });
+    res.end(data);
   } else {
     res.writeHead(404, {
-      "Content-type": "HTML/text",
+      "Content-type": "text/html",
     });
     res.end("404 page not found");
   }
