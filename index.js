@@ -44,7 +44,7 @@ const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
 const dataObj = JSON.parse(data);
 
 const server = http.createServer((req, res) => {
-  const pathname = req.url;
+  const { query, pathname } = url.parse(req.url, true);
 
   ///overview page
   if (pathname === "/" || pathname === "/overview") {
@@ -57,7 +57,11 @@ const server = http.createServer((req, res) => {
 
     ///product page
   } else if (pathname === "/product") {
-    res.end("this is PRODUCT");
+    res.writeHead(200, { "Content-type": "text/html" });
+    const product = dataObj[query.id];
+    const output = replaceTemplate(tempProduct, product);
+    console.log(output);
+    res.end(output);
 
     ///api
   } else if (pathname === "/api") {
