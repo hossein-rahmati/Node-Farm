@@ -29,30 +29,7 @@ To get started with this project, follow these steps:
    npm start
    ```
 
-The server will start listening on port 8000 by default. You can access the application in your browser by visiting http://localhost:8000.
-
-## Project Structure
-
-The project structure is as follows:
-
-```
-node-farm/
-├── index.js
-├── package.json
-├── public/
-│   ├── css/
-│   │   └── style.css
-│   └── img/
-│       └── avocado.jpg
-├── routes/
-│   └── api.js
-├── templates/
-│   ├── template-card.html
-│   ├── template-overview.html
-│   └── template-product.html
-└── utils/
-    └── slugify.js
-```
+By default, the server will start listening to port 8000. You can access the application in your browser by visiting http://localhost:8000.
 
 ## Contributing
 
